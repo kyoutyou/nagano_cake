@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     resources :items,only:[:index,:show]
-    resources :registrations,only:[:new,:create]
-    resources :sessios,only:[:new,:create,:destroy]
     resources :customers,only:[:show,:edit,:update,:unsubscibe,:destroy]
     resources :cart_items,only:[:index,:update,:destroy,:destroy_all,:create]
     resources :orders,only:[:new,:confirm,:complete,:create,:index,:show]
@@ -22,7 +20,6 @@ Rails.application.routes.draw do
 
    namespace :admin do
      resources :items
-     resources :sessions,only:[:new,:create,:destroy]
      resources :genres,only:[:index,:create,:edit,:update]
      resources :customers,only:[:index,:show,:edit,:update]
      resources :orders,only:[:show,:update]
