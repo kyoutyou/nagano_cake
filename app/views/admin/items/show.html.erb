@@ -1,3 +1,11 @@
 <div class="w-25 mx-auto">
   <h2>商品詳細</h2>
+  <div>
+    <%= image_tag @item.get_image %>
+    <p>商品名：<%= @item.name %></p>
+    <p>商品説明：<%= @item.introduction %></p>
+    <p>ジャンル：<%= @item.genre_id %></p>
+    <p>税込価格(税抜価格)：<%= @item.price %></p>
+    <p>販売ステータス：<%= @item.is_active %></p>
+  </div>
 </div>
