@@ -12,13 +12,19 @@
     <tbody>
       <% @customers.each do |customer| %>
       <tr>
-        <th></th>
+        <th><%= customer.id %></th>
         <th>
           <%= customer.first_name %>
           <%= customer.last_name %>
         </th>
-        <th></th>
-        <th></th>
+        <th><%= customer.email %></th>
+        <th>
+          <% if customer.is_deleted %>
+          有効
+          <% else %>
+          退会
+          <% end %>
+        </th>
       </tr>
       <% end %>
     </tbody>

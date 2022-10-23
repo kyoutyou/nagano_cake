@@ -1,0 +1,31 @@
+<div class="w-25 mx-auto">
+  <table class="table tabli-hover table-inverse">
+
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td>
+            <%= customer.first_name %>
+            <%= customer.last_name %>
+          </td>
+          <td>
+            <%= customer.first_name_kana %>
+            <%= customer.last_name_kana %>
+          </td>
+          <td><%= customer.postal_code %></td>
+          <td><%= customer.address %></td>
+          <td><%= customer.telephone_number %></td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_deleted %>
+             有効
+            <% else %>
+            退会
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

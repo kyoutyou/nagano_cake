@@ -18,12 +18,12 @@
     </div>
     <div>
       <h3>新着商品</h3>
-      <div class="top_item">
+      <div class="d-flex flex-wrap">
         <% @items.each do |item| %>
           <div>
             <div>
-              <%= link_to  admin_item_path(item.id) do %>
-                <%= image_tag item.get_profile_image(100,100) %>
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image(100,100) %>
               <% end %>
             </div>
             <div><%= item.name %></div>
@@ -31,6 +31,7 @@
           </div>
         <% end %>
       </div>
+      <%= link_to "全ての商品を見る>",items_path %>
     </div>
   </div>
 </div>
