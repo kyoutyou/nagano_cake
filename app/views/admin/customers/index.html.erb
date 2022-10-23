@@ -1,0 +1,26 @@
+<div class="w-25 mx-auto">
+  <h4>会員一覧</h4>
+  <table class="table tabli-hover table-inverse">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+      <tr>
+        <th></th>
+        <th>
+          <%= customer.first_name %>
+          <%= customer.last_name %>
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
