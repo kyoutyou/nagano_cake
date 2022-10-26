@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       registrations: "public/registrations",
       sessions: 'public/sessions'
   }
+  
   scope module: :public do
     resources :items,only:[:index,:show]
     resources :customers,only:[:show,:edit,:update,:unsubscibe,:destroy]
