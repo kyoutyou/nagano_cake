@@ -24,7 +24,7 @@
           <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
             <li class="nav-item">
-              <%= link_to customer_path(current_customer) do %>
+              <%= link_to customers_path do %>
                 <div class="nav-link">マイページ</div>
               <% end %>
             </li>

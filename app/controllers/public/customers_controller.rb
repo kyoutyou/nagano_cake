@@ -1,13 +1,16 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer=Customer.find(params[:id])
+    @customer=current_customer
   end
 
   def edit
-    @public_customer=current_customer.id
+    @public_customer=current_customer
   end
 
   def update
+    @public = current_customer
+    @public.update(customer_params)
+    redirect_to customers_path
   end
 
   def unsubscibe
@@ -15,7 +18,7 @@ class Public::CustomersController < ApplicationController
 
   def destroy
   end
-  
+
   private
 
   def customer_params
