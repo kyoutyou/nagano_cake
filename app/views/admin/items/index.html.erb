@@ -16,7 +16,7 @@
           <td><%= item.id %></td>
           <td><%=link_to item.name, admin_item_path(item.id) %></td>
           <td><%= item.price %></td>
-          <td><%= item.genre_id %></td>
+          <td><%= item.name %></td>
           <td>
             <% if item.is_active %>
             販売中
@@ -28,4 +28,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @items %>
 </div>

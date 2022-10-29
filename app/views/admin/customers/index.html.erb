@@ -1,5 +1,5 @@
 <div class="w-25 mx-auto">
-  <h4>会員一覧</h4>
+  <h8>会員一覧</h8>
   <table class="table tabli-hover table-inverse">
     <thead>
       <tr>
@@ -12,21 +12,22 @@
     <tbody>
       <% @customers.each do |customer| %>
       <tr>
-        <th><%= customer.id %></th>
-        <th>
+        <td><%= customer.id %></td>
+        <td>
           <%= customer.first_name %>
           <%= customer.last_name %>
-        </th>
-        <th><%= customer.email %></th>
-        <th>
+        </td>
+        <td><%= customer.email %></td>
+        <td>
           <% if customer.is_deleted %>
           有効
           <% else %>
           退会
           <% end %>
-        </th>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <%= paginate @customers %>
 </div>
