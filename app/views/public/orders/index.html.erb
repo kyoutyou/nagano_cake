@@ -12,8 +12,20 @@
       </tr>
     </thead>
     <tbody>
-      <% %>
-      <td></td>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at %></td>
+        <td><%= order.shipping_address %></td>
+        <td>
+          <% order.order_details.each do |detaile| %>
+            <%= detaile.item.name %>
+          <% end %>
+        </td>
+        <td><%= order.total_payment %></td>
+        <td><%= order.status %></td>
+        <td><%= link_to "表示する",order_path(order.id) %></td>
+      </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
