@@ -1,7 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <h4 class="m-4"><%= @item %></h4>
-    </div>
-  </div>
+<div class="w-50 mx-auto">
+  <div><%= image_tag @item.get_image(100,100) %></div>
+  <diV>
+    <h4><%= @item.name %></h4>
+      <p><%= @item.introduction %></p>
+  </diV>
+  <div>￥<%= @item.price %>(税込)</div>
+  <%= form_with model: @cart_item,url: cart_items_path, method: :post do |f| %>
+  <div><%= f.select :amount, *[1..10] %></div>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <div class="m-5"><%= f.submit 'カートに入れる' %></div>
+  <% end %>
 </div>

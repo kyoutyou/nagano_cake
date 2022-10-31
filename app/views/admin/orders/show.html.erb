@@ -1,6 +1,24 @@
 <div class="w-50 mx-auto">
   <h4>注文履歴詳細</h4>
+  <h6>注文情報</h6>
   <table class="table tabli-hover table-inverse">
-  
+    <thead>
+      <tr>
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>支払方法</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
