@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'home/about'=>"homes#about", as: "about"
     get 'orders/complete'=>'orders#complete'
     post 'orders/confirm'=>'orders#confirm'
-    get 'customers/unsubscibe'=>'customers#unsubscibe'
+    get 'customers/unsubscribe'=>'customers#unsubscribe'
     resources :items,only:[:index,:show]
     resource :customers,only:[:show,:edit,:update,:destroy]
     resources :cart_items,only:[:index,:update,:destroy,:destroy_all,:create]

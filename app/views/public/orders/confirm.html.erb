@@ -1,0 +1,60 @@
+<div class="w-50 mx-auto ">
+  <h4 class="text-center">注文情報確認</h4>
+  <table class="table tabli-hover table-inverse">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% sum=0 %>
+      <%  @cart_items.each do |cart_item| %>
+        <tr>
+          <th><%= cart_item.item.name %></th>
+          <th><%= cart_item.item.tax_price %></th>
+          <th><%= cart_item.amount %></th>
+          <th><%= cart_item.subtotal %></th>
+        </tr>
+      <% sum +=  cart_item.subtotal %>
+      <% end %>
+    </tbody>
+  </table>
+  <table class="table tabli-hover table-inverse">
+    <thead>
+      <tr>
+        <th>送料</th>
+        <th>商品合計</th>
+        <th>請求金額</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @order.shipping_cost %></td>
+        <td><%= sum %></td>
+        <td><%= @order.shipping_cost + sum %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <p>支払方法 :<%= @order.payment_method %></p>
+  </div>
+  <div>
+    <p>お届け先 :〒<%= current_customer.postal_code + current_customer.address + current_customer.first_name + current_customer.last_name %></p>
+  </div>
+
+
+  <%= form_with model: @order,url: orders_path,method: :post  do |f| %>
+    <%= f.hidden_field :customer_id,:value =>current_customer.id %>
+    <%= f.hidden_field :shipping_postal_code,:value =>current_customer.postal_code %>
+    <%= f.hidden_field :shipping_address,:value =>current_customer.address %>
+    <%= f.hidden_field :shipping_name,:value =>current_customer.first_name + current_customer.last_name %>
+    <%= f.hidden_field :total_payment,:value =>sum %>
+    <%= f.hidden_field :shipping_cost,:value => 800 %>
+    <%= f.hidden_field :payment_method,:value =>@order.payment_method %>
+    <%= f.hidden_field :status,:value => 0 %>
+    <%= f.submit '注文を確定する' %>
+  <% end %>
+</div>
