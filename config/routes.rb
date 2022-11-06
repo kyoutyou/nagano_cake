@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     get 'orders/complete'=>'orders#complete'
     get 'customers/unsubscribe'=>'customers#unsubscribe'
     delete 'cart_items/destroy_all'=>'cart_items#destroy_all'
+    patch 'customers/withdraw'=>'customers#withdraw'
     resources :items,only:[:index,:show]
-    resource :customers,only:[:show,:edit,:update,:destroy]
+    resource :customers,only:[:show,:edit,:update]
     resources :cart_items,only:[:index,:update,:destroy,:create]
     resources :orders,only:[:new,:create,:index,:show] do
       collection do

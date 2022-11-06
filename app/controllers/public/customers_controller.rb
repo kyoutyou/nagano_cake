@@ -16,7 +16,10 @@ class Public::CustomersController < ApplicationController
   def unsubscibe
   end
 
-  def destroy
+  def withdraw
+    @public_customer=current_customer
+    @public_customer.update(is_deleted: true)
+    redirect_to root_path
   end
 
   private
