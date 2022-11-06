@@ -1,7 +1,7 @@
 <div class="w-50 mx-auto">
   <div class="d-flex text-black">
     <h4 class="p-3 w-100 ">ショッピングカート</h4>
-    <h4 class="p-3 flex-shrink-0 "><%= link_to "カートを空にする", cart_item_path(@cart_items), method: :delete, "data-confirm" => "本当に削除しますか？" %></h4>
+    <h4 class="p-3 flex-shrink-0 "><%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></h4>
   </div>
 
   <table class="table tabli-hover table-inverse">

@@ -12,12 +12,16 @@ Rails.application.routes.draw do
     root to:"homes#top"
     get 'home/about'=>"homes#about", as: "about"
     get 'orders/complete'=>'orders#complete'
-    post 'orders/confirm'=>'orders#confirm'
     get 'customers/unsubscribe'=>'customers#unsubscribe'
+    delete 'cart_items/destroy_all'=>'cart_items#destroy_all'
     resources :items,only:[:index,:show]
     resource :customers,only:[:show,:edit,:update,:destroy]
-    resources :cart_items,only:[:index,:update,:destroy,:destroy_all,:create]
-    resources :orders,only:[:new,:create,:index,:show]
+    resources :cart_items,only:[:index,:update,:destroy,:create]
+    resources :orders,only:[:new,:create,:index,:show] do
+      collection do
+        post 'confirm'
+      end
+    end
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
   end
 
