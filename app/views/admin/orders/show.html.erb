@@ -18,8 +18,11 @@
         <%= @order.payment_method %>
       </p>
       <p>
-        注文ステータス
-        <%= @order.status %>
+        <%= form_with model: @order,url: admin_order_path(@order.id),method: :patch  do |f| %>
+          <%= f.label :注文ステータス %>
+          <%= f.select :status, options_from_collection_for_select(Order.all, :id, :status) %>
+        <% end %>
+        <% link_to '更新',admin_order_path(@order.id) %>
       </p>
     </div>
 
@@ -35,15 +38,31 @@
       </tr>
     </thead>
     <tbody>
-      <% @orders.each do |order| %>
+      <% @order_details.each do |detail| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= detail.item.name %></td>
+        <td><%= (detail.price*1.1).floor %></td>
+        <td><%= detail.amount %></td>
+        <td><%= detail.subtotal %></td>
+        <td>
+          <%= detail.making_status %>
+        </td>
       </tr>
       <% end %>
     </tbody>
+  </table>
+  <table class="table tabli-hover table-inverse">
+    <tr>
+      <th>商品合計</th>
+      <td><%= @order.total_payment - @order.shipping_cost %></td>
+    </tr>
+    <tr>
+      <th>送料</th>
+      <td><%= @order.shipping_cost %></td>
+    </tr>
+    <tr>
+      <th>請求金額合計</th>
+      <td><%= @order.total_payment %></td>
+    </tr>
   </table>
 </div>
