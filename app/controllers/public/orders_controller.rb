@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :cart_empty, only:[:new]
   def new
     @order=Order.new
     @customer=current_customer
@@ -47,6 +48,13 @@ class Public::OrdersController < ApplicationController
   def show
     @order=Order.find(params[:id])
     @order_details=@order.order_details
+  end
+
+  def cart_empty
+    @cart_items=current_customer.cart_items
+    unless @cart_items.exists?
+      redirect_to cart_items_path
+    end
   end
 
   private
