@@ -30,10 +30,10 @@
 
     <h6>会員ステータス</h6>
     <%= f.radio_button :is_deleted,true %>
-    <%= f.label :is_deleted, "有効" %>
+    <%= f.label :is_deleted, "退会" %>
 
     <%= f.radio_button :is_deleted,false %>
-    <%= f.label :is_deleted, "退会" %>
+    <%= f.label :is_deleted, "有効" %>
 
     <h6 class="m-5"><%= f.submit '変更を保存' %></h6>
   <% end %>

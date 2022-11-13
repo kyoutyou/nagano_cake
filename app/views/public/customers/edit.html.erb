@@ -3,12 +3,12 @@
     <%= form_with model: @public_customer,url:  customers_path do |f| %>
       <div>
         <div>
-          氏名:<%= f.text_field :last_name %>
-          <%= f.text_field :first_name %>
+          氏名:<%= f.text_field :first_name %>
+          <%= f.text_field :last_name %>
         </div>
         <div>
-          フリガナ:<%= f.text_field :last_name_kana %>
-          <%= f.text_field :first_name_kana %>
+          フリガナ:<%= f.text_field :first_name_kana %>
+          <%= f.text_field :last_name_kana %>
         </div>
         <div>
           郵便番号:<%= f.text_field :postal_code %>
@@ -24,7 +24,7 @@
         </div>
         <div class="m-5">
           <%= f.submit '編集内容を保存' %>
-          <%= link_to "退会する", customers_unsubscribe_path %>
+          <%= link_to "退会する", customers_withdraw_path %>
         </div>
       </div>
     <% end %>

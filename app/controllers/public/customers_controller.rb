@@ -19,7 +19,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     @public_customer=current_customer
     @public_customer.update(is_deleted: true)
-    redirect_to root_path
+    sign_out_and_redirect(current_customer)
   end
 
   private
