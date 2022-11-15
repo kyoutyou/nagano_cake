@@ -30,9 +30,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= @order.total_payment %></td>
+        <td><%= @order.total_payment-@order.shipping_cost %></td>
         <td><%= @order.shipping_cost %></td>
-        <td><%= @order.shipping_cost + @order.total_payment %></td>
+        <td><%= @order.total_payment %></td>
       </tr>
     </tbody>
   </table>
@@ -47,7 +47,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @order_details.each do |order_detail| %>
+      <% @order.order_details.each do |order_detail| %>
       <tr>
         <td><%= order_detail.item.name %></td>
         <td><%= order_detail.item.tax_price %></td>
